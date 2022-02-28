@@ -1,24 +1,88 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# First Query 
+<a href="https://dev.to/isalevine ruby-on-rails-graphql-api-tutorial-from-rails-new-to-first-query-76h"> rails graphql query</a>
 
-Things you may want to cover:
+``` 
+query {
+    allOrders {
+        id
+        description
+        total      
+        payments {
+            id
+            amount
+        }
+        paymentsCount
+    }
+	allOrders {
+        description
+        total      
+        payments {
+            amount
+        }
+    }
+}
 
-* Ruby version
 
-* System dependencies
+```
+# mutation
+<a href="https://dev.to/isalevine/ruby-on-rails-graphql-api-tutorial-creating-data-with-mutations-39ab"> rails graphql mutaion</a>
 
-* Configuration
+``` 
+mutation {
+  createOrder(input: {
+    description: "Octo Octa - Resonant Body (vinyl)",
+    total: 21.82
+  }) {
+    order {
+      id
+      description
+      total
+      payments {
+        id
+        amount
+      }
+      paymentsCount
+    }
+    errors
+  }
+}
+```
 
-* Database creation
 
-* Database initialization
+# Custom Fields and Class Methods 
+<a href="https://dev.to/isalevine/ruby-on-rails-graphql-api-tutorial-filtering-with-custom-fields-and-class-methods-3efd"> rails graphql Fields, Class</a>
 
-* How to run the test suite
+```
+query {
+    allOrders {
+        id
+        description
+        total      
+        payments {
+            id
+            amount
+            status
+        }
+        paymentsCount
+    }
+}
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+query {
+    allOrders {
+        id
+        description
+        total      
+        successfulPayments {
+            id
+            amount
+            status
+        }
+    }
+}
+
+
+```
